@@ -7,6 +7,7 @@ class Contact
     @last_name = attributes.fetch(:last_name)
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
+    @addresses = []
   end
 
   def self.all
@@ -19,5 +20,13 @@ class Contact
 
   def self.clear
     @@contacts = []
+  end
+
+  def addresses
+    @addresses
+  end
+
+  def add_address(address)
+    @addresses.push(address)
   end
 end

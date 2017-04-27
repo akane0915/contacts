@@ -59,4 +59,21 @@ describe (Contact) do
       expect(Contact.all).to(eq([]))
     end
   end
+
+  describe('#addresses') do
+    it('returns the addresses array; it is empty to start') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      expect(test_contact.addresses).to(eq([]))
+    end
+
+  end
+
+  describe('#add_address') do
+    it('adds the address to the selected contact') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      test_address = Address.new({:type => 'home', :street => '555 Main St', :city => 'Portland', :state => 'OR', :zip => '97201'})
+      test_contact.add_address(test_address)
+      expect(test_contact.addresses).to(eq([test_address]))
+    end
+  end
 end
