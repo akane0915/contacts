@@ -2,6 +2,21 @@
 
 <h3><%=@contact.job_title%> at <%=@contact.company %></h3>
 
+<h4>Phone Number(s):</h4>
+<ul>
+  <% @contact.phones.each do |phone| %>
+  <li><%=phone.type%> : <%=phone.number%></li>
+  <%end%>
+</ul>
+
+<h4>Email(s):</h4>
+<ul>
+  <% @contact.emails.each do |email| %>
+  <li><%=email.type%> : <%=email.email_address%></li>
+  <%end%>
+</ul>
+
+
 <a href="/contacts/<%=@contact.id%>/phones/new">Add Phone Number</a>
 <br>
 <a href="/contacts/<%=@contact.id%>/emails/new">Add Email Address</a>

@@ -41,12 +41,16 @@ get('/contacts/:id/phones/new') do
   erb(:contacts_phones_form)
 end
 
+get('/contacts/:id/emails/new') do
+  @contact = Contact.find(params.fetch('id').to_i)
+  erb(:contacts_emails_form)
+end
+
+
 post('/contacts/:id') do
   type = params.fetch('type')
   number = params.fetch('number')
-  binding.pry
-  @phone = Phone.new({:type => 'type', :number => 'number'}).save
-  @contact = Contact.find(params.fetch('id').to_i)
-  @contact.add_phone(@phone)
+  @contact = Contact.find(params.fetch('contact_id').to_i)
+  @contact.add_phone(Phone.new({:type => type, :number => number}))
   erb(:success)
 end
