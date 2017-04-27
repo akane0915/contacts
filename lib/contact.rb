@@ -1,6 +1,6 @@
 class Contact
   @@contacts = []
-  attr_reader(:first_name, :last_name, :job_title, :company)
+  attr_reader(:first_name, :last_name, :job_title, :company, :id)
 
   def initialize (attributes)
     @first_name = attributes.fetch(:first_name)
@@ -9,6 +9,8 @@ class Contact
     @company = attributes.fetch(:company)
     @addresses = []
     @phones = []
+    @emails = []
+    @id = @@contacts.length + 1
   end
 
   def self.all
@@ -38,4 +40,23 @@ class Contact
   def add_phone(phone)
     @phones.push(phone)
   end
+
+  def emails
+    @emails
+  end
+
+  def add_email(email)
+    @emails.push(email)
+  end
+
+  def self.find(id_num)
+    found_contact = nil
+    @@contacts.each do |contact|
+      if contact.id == id_num
+        found_contact = contact
+      end
+    end
+    found_contact
+  end
+
 end

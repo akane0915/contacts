@@ -92,4 +92,36 @@ describe (Contact) do
       expect(test_contact.phones).to(eq([test_phone]))
     end
   end
+
+  describe('#emails') do
+    it('return the emails array; it is empty to start')do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      expect(test_contact.emails).to(eq([]))
+    end
+  end
+
+  describe('#add_email') do
+    it('adds the email to the selected contact') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      test_email = Email.new({:type => 'work', :email_address => 'tom@myspace.com'})
+      test_contact.add_email(test_email)
+      expect(test_contact.emails).to(eq([test_email]))
+    end
+  end
+
+  describe('#id') do
+    it('returns the id of the Contact') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      expect(test_contact.id).to(eq(1))
+    end
+  end
+
+  describe('.find') do
+    it('returns a contact by its ID number') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      test_contact.save
+      expect(Contact.find(test_contact.id)).to(eq(test_contact))
+    end
+  end
+
 end
