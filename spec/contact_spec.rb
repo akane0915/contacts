@@ -1,12 +1,15 @@
 require 'contact'
 require 'rspec'
 require 'pry'
+require 'address'
+require 'email'
+require 'phone'
 
 describe (Contact) do
   before() do
     Contact.clear
   end
-  
+
   describe('#first_name') do
     it('returns first name of contact') do
       test_contact = Contact.new({:first_name=> 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
