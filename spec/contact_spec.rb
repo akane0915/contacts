@@ -76,4 +76,20 @@ describe (Contact) do
       expect(test_contact.addresses).to(eq([test_address]))
     end
   end
+
+  describe('#phones') do
+    it('return the phones array; it is empty to start')do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      expect(test_contact.phones).to(eq([]))
+    end
+  end
+
+  describe('#add_phone') do
+    it('adds the phone to the selected contact') do
+      test_contact = Contact.new({:first_name => 'Asia', :last_name => 'Kane', :job_title => 'senior dev', :company => 'Etsy'})
+      test_phone = Phone.new({:type => 'cell', :number => '3863341234'})
+      test_contact.add_phone(test_phone)
+      expect(test_contact.phones).to(eq([test_phone]))
+    end
+  end
 end
