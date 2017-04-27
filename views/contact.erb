@@ -1,1 +1,9 @@
 <h1> <%= @contact.last_name %>, <%= @contact.first_name %></a></h1>
+
+<h3><%=@contact.job_title%> at <%=@contact.company %></h3>
+
+<a href="/contacts/<%=@contact.id%>/phones/new">Add Phone Number</a>
+<br>
+<a href="/contacts/<%=@contact.id%>/emails/new">Add Email Address</a>
+<br>
+<a href="/contacts/<%=@contact.id%>/addresses/new">Add Street Address</a>
